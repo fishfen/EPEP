@@ -1,0 +1,46 @@
+experiment_name: 'base-ft'
+
+base_config: 'cfg/model.yaml'
+train_mode: 'self-supervised'
+pretrain: 'output/pretrain/ckpt/best_model.pth.tar'
+
+dataset:
+  type: 'real'
+  data_path: 'data/realsite'  
+
+model:  
+  
+  loss_info: {
+              'arm_length': {'loss_type':'l2', 'weight': 5.0}, 'cabin_size': {'loss_type':'l2', 'weight': 10.0},
+              'chasis_size': {'loss_type':'l2', 'weight': 10.0},'bucket_size': {'loss_type':'l2', 'weight': 1.0},
+              'other_offset': {'loss_type':'l2', 'weight': 1.0}, 
+              'segment': {'weight': 1.0}, 'rotation': {'loss_type':'l2', 'weight': 2.0},
+              'p2p_boom': {'weight': 0.5}, 
+              'p2p_stick': {'weight': 1.0}, 
+              'p2p_bucket': {'weight': 0.5}, 
+              'p2p_cabin': {'weight': 1.0}, 
+              'p2p_chassis': {'weight': 2.0}, 
+              'planarity': {'weight': 0.1}, 'point2plane': {'weight': 0.2},
+              }
+  loss_cfg:
+    chasis_q: 4
+    cabin_q: 4
+    chasis_ignore_z: True
+    cabin_ignore_z: True
+    bucket_lambda: [0.5, 0.4]
+
+
+optimization:
+  batchsize: 16
+  num_epochs: 100
+
+  optimizer: 'adam'
+  learning_rate: 0.0001
+  weight_decay: 0.001  
+  momentum: 0.9
+
+  scheduler: 'multisteplr'  
+  milestones: [40,60]
+  gamma: 0.1
+
+

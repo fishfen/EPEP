@@ -1,0 +1,48 @@
+experiment_name: 'base'
+# change: 
+
+base_config: 'cfg/model.yaml'
+train_mode: 'supervised'
+
+dataset:
+  type: 'frame' 
+  num_per_seq: 1
+  data_path: 'data/syn_data'
+
+model:
+  
+  loss_info: {
+              'rotation': {'loss_type': 'l2', 'weight': 5.0},
+              'theta': {'loss_type': 'l2', 'weight': 2.0}, 
+              'cabin_size': {'loss_type': 'l2', 'weight': 1.0},
+              'chasis_size': {'loss_type': 'l2', 'weight': 1.0},
+              'bucket_size': {'loss_type': 'l2', 'weight': 0.5},
+              'other_offset': {'loss_type': 'l2', 'weight': 1.0},
+              'segment':  {'weight': 2.0}, 
+              'heatmap': {'loss_type': 'l2', 'weight': 0.0}, 
+              'vector': {'loss_type': 'l2', 'weight': 0.5},
+              'planarity': {'weight': 0.1}, 
+              'point2plane': {'weight': 0.2},
+              'keypoints': {'loss_type': 'l2', 'weight': 2.0}
+              }
+  
+  hm_sigma: [1.0, 0.5, 0.5, 0.5]  # sigma of gaussian in heat map for 4 keypoints
+  hm_thre: 0.01   # only count the values about this thre
+
+
+optimization:
+  batchsize: 32
+  num_epochs: 150
+
+  optimizer: 'adam'
+  learning_rate: 0.0001
+  weight_decay: 0.001 
+  momentum: 0.9
+
+  scheduler: 'onecyclelr'
+  max_lr: 0.001
+  pct_start: 0.3
+  div_factor: 20
+  final_div_factor: 1000
+
+

@@ -1,0 +1,7 @@
+open3d
+easydict
+tensorboard
+torch-scatter==2.1.1
+torch-geometric==2.6.1
+einops
+timm

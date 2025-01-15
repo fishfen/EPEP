@@ -1,0 +1,34 @@
+
+file_path: 'data/obj'
+out_path: 'data/syn_data'
+add_object: {'ground': {'prob': 0.8, 'obj':['ground1',  'ground2', 'ground3', 'ground4','ground5','ground6']},
+              'clutter': {'prob': 0.5, 'obj':['clutter1', 'clutter2','clutter3']},
+              'truck': {'prob': 0.2, 'obj':['truck1']},
+              'load': {'prob': 0.2, 'obj':['clutter1', 'clutter2','clutter3']}}
+
+random_seed: 42
+
+size_init_cabin: [4, 3.0, 2.2]
+size_init_chasis: [4.4, 3.1, 1.0]
+size_init_bucket: [1.0, 1.2]  # depth (dx), width (dy)
+gap_chasis_cabin: 0.1
+cabin_init_x: -0.72
+len_arm1: {'arm1_1': 6.22, 'arm1_1_nobrace': 6.22, 'arm1_2': 5.8, 'arm1_2_nobrace': 5.8}
+len_arm2: 3.0
+len_bucket: 1.44
+
+limit_angle1: [-10, 75]
+limit_angle2: [30, 140]
+limit_angle3: [45, 225]
+limit_theta: [-90, 90]
+limit_yaw: [-16, 16]
+limit_roll: [-10, 10]
+limit_tx: [-2,2]
+limit_ty: [-1.5,1.5]
+limit_tz: [-2,2]
+
+lidar_dist: [15, 50]
+lidar_height: [2.5, 7]
+lidar_angle: [-180, 180]
+range_noise: 0.03
+pointcloud_crop_range: 20

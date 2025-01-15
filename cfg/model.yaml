@@ -1,0 +1,51 @@
+model_name: 'default-model'
+
+model:
+  
+  backbone:
+    patch_embed_depth: 1
+    patch_embed_channels: 32
+    patch_embed_groups: 4
+    patch_embed_neighbours: 8
+    enc_depths: [2, 2, 6, 2]
+    enc_channels: [64, 128, 256, 256]
+    enc_groups: [8, 16, 32, 32]
+    enc_neighbours: [16, 16, 16, 16]
+    dec_depths: [1, 1, 1, 1]
+    dec_channels: [32, 64, 128, 256]
+    dec_groups: [4, 8, 16, 32]
+    dec_neighbours: [16, 16, 16, 16]
+    grid_sizes: [0.4, 0.8, 1.6, 3.2]  # carefully set
+    attn_qkv_bias: True
+    pe_multiplie: False
+    pe_bias: True
+    attn_drop_rate: 0
+    drop_path_rate: 0
+    global_pool_method: 'mean'
+
+  spatial_attention: False
+  
+  direct_regress: {
+                    'rotation': {'out_channels': 6, 'num_layer': 2},
+                    'theta': {'out_channels': 2, 'num_layer': 2},   # cos sin
+                    'cabin_size': {'out_channels': 3, 'num_layer': 2},
+                    'chasis_size': {'out_channels': 3, 'num_layer': 2},
+                    'bucket_size': {'out_channels': 2, 'num_layer': 2},
+                    'other_offset': {'out_channels': 3, 'num_layer': 2},  # root_z, root_y, cabin_x
+                  }
+
+  point_wise_predict: {
+                      'segment': {'out_channels': 6, 'num_layer': 2},   # background is 0, part in 1~5
+                      'heatmap': {'out_channels': 4, 'num_layer': 2},  # heat map of closeness to key points 
+                      'vector': {'out_channels': 12, 'num_layer': 2},  # offset from points to key points, 12=4x3
+                      }
+  
+
+  
+
+
+
+  
+
+
+

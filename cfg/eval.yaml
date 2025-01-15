@@ -1,0 +1,10 @@
+
+base_config: 'cfg/model.yaml'
+ckpt: 'output/base/ckpt/best_model.pth.tar'
+experiment_name: 'base'
+
+dataset:
+  type: 'real'  
+  data_path: 'data/realsite'
+
+jpa_thre: 0.4

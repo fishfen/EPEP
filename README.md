@@ -6,6 +6,15 @@ This repository contains the source code for our paper *Excavator 3D Pose Estima
 
 If our work is helpful to you, please cite us:
 ```
+@article{zhang2025excavator,
+  title     = {Excavator 3D pose estimation from point cloud with self-supervised deep learning},
+  author    = {Zhang, M. and Guo, W. and Zhang, J. and Han, S. and Li, H. and Yue, H.},
+  journal   = {Computer-Aided Civil and Infrastructure Engineering},
+  year      = {2025},
+  pages     = {1--19},
+  doi       = {10.1111/mice.13500},
+  url       = {https://doi.org/10.1111/mice.13500}
+}
 @software{EPEP,
   title = {Excavator 3D Pose Estimation from Point Cloud with Self-supervised Learning},
   author = {Mingyu Zhang, Wenkang Guo, Jiawen Zhang, Shuai Han, Heng Li, Hongzhe Yue},
